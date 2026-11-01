@@ -15,6 +15,10 @@ Server kecil di Vercel yang menyimpan API key Gemini milik tim, supaya key itu t
 4. Di CLI: `aeryth config set gateway.url https://nama-project.vercel.app`, atau isi konstanta `DEFAULT_GATEWAY_URL` di `src/providers/aeryth.js` sebelum dibagikan.
 5. Cek: `aeryth providers test aeryth`.
 
+## Jika alamat gateway menampilkan 404
+
+Cek dulu dengan `curl -i https://NAMA-PROJECT.vercel.app/api/gemini/default`. Jawaban yang benar adalah JSON `{"model":...}`. Rute ditangani dua cara: file `api/gemini/[...path].js` dan aturan `rewrites` di `vercel.json` yang mengarah ke `api/proxy.js`. Pastikan kedua file itu dan `vercel.json` ada di akar repository, lalu lihat tab Deployments, Functions di Vercel.
+
 ## Batas yang harus Anda tahu
 
 - Pembatasan per IP disimpan di memori fungsi, jadi tidak ketat (bisa reset saat fungsi dimulai ulang dan tidak dibagi antar instance). Untuk pembatasan yang kuat, pakai penyimpanan bersama seperti Vercel KV atau Upstash Redis.

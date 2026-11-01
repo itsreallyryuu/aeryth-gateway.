@@ -1,5 +1,8 @@
 {
   "functions": {
-    "api/gemini/[...path].js": { "maxDuration": 60 }
-  }
+    "api/proxy.js": { "maxDuration": 60 }
+  },
+  "rewrites": [
+    { "source": "/api/gemini/:path*", "destination": "/api/proxy?path=:path*" }
+  ]
 }
