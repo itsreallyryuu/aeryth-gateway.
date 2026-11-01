@@ -1,0 +1,5 @@
+{
+  "functions": {
+    "api/gemini/[...path].js": { "maxDuration": 60 }
+  }
+}
